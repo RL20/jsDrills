@@ -1,3 +1,5 @@
+//referance https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
+
 //!1. Fill an array with 100 of a same object using array fillmethod.
 // let bla='bla bla';
 // let filledArray = new Array(100).fill(bla);

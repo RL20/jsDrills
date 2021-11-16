@@ -25,12 +25,18 @@ function getPrice(candyStore, id) {
   return found.price;
 }
 function addCandy(candyStore, id, name, price) {
-  const found = candyStore.candies.forEach((element) => {
-    if (element.id === id) {
-      element.amount++;
-    }
-  });
+  const found = candyStore.candies.find((element) => element.id === id);
+  if (!found) {
+    return candyStore.candies.push({
+      name: name,
+      id: id,
+      price: price,
+      amount: 1,
+    });
+  }
+  return ++found.amount;
 }
+
 function buy(candyStore, id) {
   const found = candyStore.candies.find((element) => element.id === id);
   candyStore.cashRegister += found.price;
@@ -38,7 +44,7 @@ function buy(candyStore, id) {
 }
 console.log(getCandy(candyStore, "5hd7y"));
 console.log(getPrice(candyStore, "5hd7y"));
-console.log(addCandy(candyStore, "5hd7y"));
+console.log("addCandy------", addCandy(candyStore, "02586", "chu", 8));
 console.log(candyStore);
 console.log(buy(candyStore, "5hd7y"));
 console.log(candyStore);

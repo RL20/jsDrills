@@ -38,20 +38,33 @@ const school = {
     },
   ],
   findPerson: function (type, id) {
-    return this[type].find((el) => el.id === id);
+    return this[type + "s"].find((el) => el.id === id);
   },
   assignStudent: function (id, subject) {
-    const student = this.students.find((el) => el.id === id);
+    const student = this.findPerson("student", id);
     const teachers = this.teachers.filter(
       (teacher) =>
         teacher.subjects.includes(subject) && teacher.capacityLeft > 0
     );
-    teachers
-      ? teachers.find((el) => max(el.capacityLeft))
-      : "Sorry,no available teachers left.";
+    if (teachers.length === 0) {
+      console.log("Sorry,no available teachers left.");
+    } else {
+      teachers[0].students.push(student);
+      // console.log("result----", teachers[0]);
+    }
+    return ""; //avoid undefined
   },
-  findStudent: function (id) {
-    const student = this.students.find((el) => el.id === id);
+  assignTeachersSubject: function (id, subject) {
+    const teacher = this.findPerson("teacher", id);
+    teacher.subjects.push(subject);
+    // console.log("subject;", teacher);
+  },
+  teachersInTheSchool: function () {
+    const teachersList = this.teachers.map((teacher) => teacher.name);
+    return teachersList;
   },
 };
-console.log(school.findPerson("students", 10));
+console.log(school.findPerson("student", 10));
+console.log(school.assignStudent(10, "biology"));
+console.log(school.assignTeachersSubject(1, "programming"));
+console.log(school.teachersInTheSchool());

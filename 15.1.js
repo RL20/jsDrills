@@ -13,6 +13,8 @@
 
 //2-sum set to const so it can't change and accumulate the result
 //?TypeError: Assignment to constant variable.
+//! i use the step into
+
 //! fix the problem
 function getSum(arr1, arr2) {
   let sum = 0;

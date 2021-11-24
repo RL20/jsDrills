@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" / >
+    <meta
+      name="viewport"
+      content="width=device-width,
+initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Header</h1>
+    <p>Paragraph</p>
+    <a href="#">link</a>
+    <img src="" alt="" />
+    <div class="x">Div with a class</div>
+    <div id="y">Div with an id</div>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+  </body>
+  <script>
+    // const all = document.body.children;
+    // const all = document.getElementsByTagName("body")[0].children;
+    // // let [h1, p, a, img, divx, divy, input1, input2, input3] = all;
+    // // let input=all[0];
+    // let h1 = document.getElementsByTagName("h1")[0];
+    // let p = document.getElementsByTagName("p")[0];
+    // let a = document.getElementsByTagName("a")[0];
+    // let img = document.getElementsByTagName("p")[0];
+    // let divs = document.getElementsByTagName("div");
+    // let x = document.getElementsByClassName("x")[0];
+    // let y = divs.item(1);
+    // let inputs = document.getElementsByTagName("input");
+    // console.log(x);
+
+    //querySelector method
+    const all = Array.from(document.querySelector("body")).children;
+    let h1 = document.querySelector("h1");
+
+    let p = document.querySelector("p");
+    let a = document.querySelector("a");
+    let img = document.querySelector("img");
+    let divx = document.querySelector(".x");
+    let divy = document.querySelector("#y");
+    let [input1, imput2, input3] = document.querySelectorAll("input");
+    // const inputs=Array.from(document.getElementsByTagName('input'));//onw way to do it
+    const inputs = [...document.getElementsByTagName("input")]; //another way
+    // console.log(inputs);
+    // inputs.forEach((input) => console.log(input));
+    //with querySellector
+    const inputs2 = [...document.querySelectorAll("input")];
+    inputs2.forEach((input) => console.log(input));
+  </script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="./script.js" defer></script> -->
+  </head>
+  <body>
+    <ul>
+      <li>title 1</li>
+      <li class="start-here">title 2</li>
+      <li>
+        <ul>
+          <li>sub title 1</li>
+          <li>sub title 2</li>
+          <li>sub title 3</li>
+        </ul>
+      </li>
+      <li>title 3</li>
+    </ul>
+    <div>
+      <p>Hello World!</p>
+    </div>
+  </body>
+  <script>
+    //     Instructions
+    // Please make the following changes to the html file while navigating the DOM.
+    // Create a variable that holds the <li> element with the class “start-here”.
+    // Use traverse methods to complete these tasks:
+    // 1. Change the text from “title 2” to “main title”
+    // 2. Add another sub title with the text “sub title 4”
+    // 3. Delete the last <li> element from the list.
+    // 4. Change the <title> element text to “Master Of The Dom”.
+    // 5. Change the text of the <p> element ot something else of your
+
+    //-0
+    // let stratHere = document.querySelector(".start-here");//simple way
+    let firstUl = document.querySelectorAll("ul")[0];
+    let stratHere = firstUl.firstElementChild.nextElementSibling;
+    console.log(stratHere);
+
+    //-1
+    // stratHere.innerHTML = "main title";//simple way
+    let newLi = document.createElement("li");
+    newLi.innerHTML = "main title";
+    firstUl.replaceChild(newLi, stratHere);
+
+    //-2
+    let newSubLi = document.createElement("li");
+    newSubLi.innerHTML = "sub title 4";
+    let innerUl = firstUl.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild; //insertBefore(newLi, stratHere);
+    innerUl.appendChild(newSubLi);
+
+    //-3
+    firstUl.removeChild(firstUl.lastElementChild);
+
+    //-4
+    let title = document.querySelector("title");
+    // title.innerHTML = "Master Of The Dom";simple way
+    let head = document.querySelector("head");
+    let newTitle = document.createElement("title");
+    newTitle.innerHTML = "Master Of The Dom ";
+    head.replaceChildren(newTitle, title);
+
+    //-5
+    let body = document.querySelector("body");
+    let p = body.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild;
+    p.innerHTML = "finally i finished this Exercise";
+    console.log(body);
+  </script>
+</html>

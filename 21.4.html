@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .btn,
+      lightbulb {
+        display: flex;
+        justify-content: center;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lightbulb">
+      <img src="/imegs/light-off.png" alt="light" />
+    </div>
+
+    <div class="btn">
+      <button class="on">ON</button>
+      <button class="off">OFF</button>
+    </div>
+  </body>
+  <script>
+    let buttonOn = document.querySelector(".on");
+    let buttonOff = document.querySelector(".off");
+    let img = document.querySelector("img");
+    buttonOn.addEventListener("click", (e) => {
+      img.src = "/imegs/light-on.png";
+    });
+    buttonOff.addEventListener("click", (e) => {
+      img.src = "/imegs/light-off.png";
+    });
+  </script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>How many smiles do you wamt to see?</h3>
+    <input data-stam="50" type="text" name="" id="" />
+    <input type="submit" value="submit" />
+    <p></p>
+  </body>
+  <script>
+    let p = document.querySelector("p");
+    let button = document.querySelector("button");
+    let input = document.querySelector("[data-stam='50']");
+    let submit = document.querySelector("[type=submit]");
+    let img = document.querySelector("img");
+    submit.addEventListener("click", (e) => {
+      let repeat = input.value;
+      // img.src = "/imegs/smily.png";
+      let newImgs = [];
+      if (repeat) {
+        for (let i = 0; i < repeat; i++) {
+          let tempImg = document.createElement("img");
+          tempImg.src = "/imegs/smily.png";
+          document.body.append(tempImg);
+        }
+      } else {
+        p.innerText = "ERROR";
+      }
+    });
+  </script>
+</html>

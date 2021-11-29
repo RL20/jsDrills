@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    age:<input type="text" name="" id="" />
+    <button class="btn">confirm your age</button>
+    <br />
+    <h3></h3>
+    <script>
+      let button = document.querySelector(".btn");
+      let input = document.querySelector("input");
+      let h3 = document.querySelector("h3");
+      button.addEventListener("click", (e) => {
+        let age = input.value;
+        if (age) {
+          let printMsg = age >= 18 ? "you can drink " : "you’re too young";
+          h3.innerText = printMsg;
+        } else {
+          h3.innerText = "put you age NOW";
+        }
+      });
+    </script>
+  </body>
+</html>

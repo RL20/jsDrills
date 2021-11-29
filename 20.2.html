@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae nemo laudantium est saepe exercitationem, in nihil blanditiis excepturi veniam. Unde ut voluptate sapiente magnam recusandae neque architecto velit cumque saepe!</p>
+    <button data-plus class="btn1">+</button>
+    <button class="btn2">-</button>
+  </body>
+  <script>
+    // 6px and 100px.
+    let button1 = document.querySelector(".btn1");
+    let button2 = document.querySelector(".btn2");
+    let p = document.querySelector("p");
+    let pStyle = getComputedStyle(p);
+
+    let size = parseInt(pStyle.fontSize); //16
+    // console.log("size", size);
+
+    // p.style.fontSize = `${size + 20}px`;
+
+    let increase = function () {
+      if (size < 100) {
+        size++;
+        p.style.fontSize = size + "px";
+      }
+      // console.log("the value", p.style.fontSize);
+    };
+    let decrease = function () {
+      if (size > 6) {
+        size--;
+        // p.style.fontSize = `${size}px;`;
+        p.style.fontSize = size + "px";
+      }
+      console.log("the value", p.style.fontSize);
+    };
+    // console.dir(pStyle);
+    button1.addEventListener("click", () => increase());
+    button2.addEventListener("click", () => decrease());
+  </script>
+</html>

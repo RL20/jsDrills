@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 200px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <label for=""> Name:</label>
+      <input type="text" name="name" id="" />
+      <label for="">Age: </label>
+      <input type="text" name="age" id="" />
+      <label for="">Email:</label>
+      <input type="text" name="email" id="" />
+      <input type="submit" value="confirm" />
+      <p class="user-details"></p>
+    </form>
+  </body>
+  <script>
+    let name = document.querySelector("[name=name]");
+    let age = document.querySelector("[name=age]");
+    let email = document.querySelector("[name=email]");
+    let userDetails = document.querySelector(".user-details");
+    let submit = document.querySelector("[type=submit]");
+
+    const formData = {};
+
+    for (let input of [name, age, email]) {
+      input.addEventListener("input", ({ target }) => {
+        console.log("trg", target);
+        const { name, value } = target;
+        formData[name] = value;
+      });
+    }
+    submit.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (Object.keys(formData).length === 0 && formData.constructor === Object) {
+        //check if {} is empty
+        let msg = "you must fill the filds";
+      } else {
+        let str = "";
+        for (const [key, value] of Object.entries(formData)) {
+          str += `${key}: ${value}\n`;
+          // console.log(`${key}: ${value}`);
+        }
+        userDetails.innerText = str;
+        let div = document.createElement("div");
+        document.body.append(div);
+        let confirm = document.createElement("button");
+        let change = document.createElement("button");
+        confirm.innerHTML = "confirm";
+        change.innerHTML = "change";
+        div.append(confirm, change);
+        change.addEventListener("click", (e) => {
+          userDetails.innerHTML = "";
+          confirm.remove();
+          change.remove();
+        });
+        confirm.addEventListener("click", (e) => {
+          userDetails.innerHTML = "congratulations you successfully sent this form";
+          confirm.remove();
+          change.remove();
+        });
+      }
+    });
+  </script>
+</html>

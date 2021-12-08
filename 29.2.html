@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button data-btn1="">fetch the joke</button>
+    <h1></h1>
+    <p></p>
+    <script>
+      let btn1 = document.querySelector("[data-btn1]");
+      let h1 = document.querySelector("h1");
+      let p = document.querySelector("p");
+      btn1.addEventListener("click", (e) => {
+        async function asyncCall() {
+          let content = await fetch(" https://api.jokes.one/jod");
+          let jokeObj = await content.json();
+          p.innerText = jokeObj.contents.jokes[0].joke.text;
+          h1.innerText = jokeObj.contents.jokes[0].joke.title;
+        }
+        asyncCall();
+        // let content = fetch(" https://api.jokes.one/jod")
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     p.innerText = data.contents.jokes[0].joke.text;
+        //     h1.innerText = data.contents.jokes[0].joke.title;
+        //   });
+      });
+    </script>
+  </body>
+</html>
